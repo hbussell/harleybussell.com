@@ -1,84 +1,112 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<'page'>['data'];
+type Props = CollectionEntry<"page">["data"];
 
-const { title, description, } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
       .main-container {
-       /* background: radial-gradient(ellipse at top,  oklch(78.06% 0.127 57.86), transparent),
+        /* background: radial-gradient(ellipse at top,  oklch(78.06% 0.127 57.86), transparent),
         radial-gradient(ellipse at bottom, oklch(78.06% 0.127 57.86 / 10.7%), transparent);
 */
         /* oklch(78.06% 0.127 57.86) */
-        background: radial-gradient(ellipse at top,  oklch(78.06% 0.127 57.86 / 15.7%), transparent),
-        radial-gradient(ellipse at bottom, oklch(78.06% 0.127 57.86 / 40%), transparent);
+        /* background: radial-gradient(
+            ellipse at top,
+            oklch(78.06% 0.127 57.86 / 15.7%),
+            transparent
+          ),
+          radial-gradient(
+            ellipse at bottom,
+            oklch(78.06% 0.127 57.86 / 40%),
+            transparent
+          );*/
 
+        /*  background: radial-gradient(
+            ellipse at top,
+            oklch(84.7% 0.127 57.86 / 35%) transparent
+          ),
+          radial-gradient(
+            ellipse at bottom,
+            oklch(78.06% 0.127 57.86 / 40%),
+            transparent
+          );*/
+
+        background: radial-gradient(
+            ellipse at top left,
+
+            white,
+            oklch(78.06% 0.127 57.86 / 15.7%)
+          ),
+          radial-gradient(
+            ellipse at bottom right,
+            oklch(78.06% 0.127 57.86 / 40%),
+            oklch(78.06% 0.127 57.86 / 15.7%)
+          );
       }
-			main {
-			/*	width: calc(100% - 2em);
+      main {
+        /*	width: calc(100% - 2em);
 				max-width: 100%;
 				margin: 0;*/
-        background-color: oklch(78.06% 0.127 57.86 / 15.7%);
+        /*  background-color: oklch(78.06% 0.127 57.86 / 15.7%);*/
 
         max-width: 800px;
-    margin: 0;
-    background-color: white;
-    background-color: rgba(255,255,255,0.8);
-    margin-left: auto;
-    margin-right: auto;
+        margin: 0;
+        background-color: white;
+        /*  background-color: rgba(255, 255, 255, 0.8);*/
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-image {
+        width: 100%;
+      }
+      .hero-image img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: var(--box-shadow);
+      }
+      .prose {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: auto;
+        padding: 1em;
+        color: rgb(var(--gray-dark));
+      }
+      .title {
+        margin-bottom: 1em;
+        padding: 1em 0;
+        text-align: center;
+        line-height: 1;
+      }
+      .title h1 {
+        margin: 0 0 0.5em 0;
+      }
+      .date {
+        margin-bottom: 0.5em;
+        color: rgb(var(--gray));
+      }
+      .last-updated-on {
+        font-style: italic;
+      }
+    </style>
+  </head>
 
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
+  <body>
+    <Header />
     <div class="main-container">
       <main>
         <article>
           <div class="prose">
-           <!-- <div class="title">
+            <!-- <div class="title">
               
               <h1>{title}</h1>
               <hr />
@@ -87,7 +115,7 @@ const { title, description, } = Astro.props;
           </div>
         </article>
       </main>
-  </div>
-		<Footer />
-	</body>
+    </div>
+    <Footer />
+  </body>
 </html>

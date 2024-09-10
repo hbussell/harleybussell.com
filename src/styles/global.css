@@ -29,8 +29,16 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Cabin";
+  src: url("/fonts/Cabin-Regular.woff2") format("woff2");
+  unicode-range: U+0025-00FF;
+}
 body {
-  font-family: "Atkinson", sans-serif;
+  /*font-family: "Atkinson", sans-serif;*/
+  /*font-family: "Recursive", sans-serif;*/
+  font-family: "Cabin", sans-serif;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -47,7 +55,7 @@ body {
   line-height: 1.7;
 }
 main {
-  width: 720px;
+  width: 780px;
   max-width: calc(100% - 2em);
   margin: auto;
   padding: 3em 1em;
