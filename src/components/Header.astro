@@ -1,50 +1,157 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
 ---
 
 <header>
-	<nav>
-		
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-		
-	</nav>
-</header>
-<style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-    background-color: oklch(78.06% 0.127 57.86 / 4.7%);
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-    border-bottom:1px solid oklch(78.06% 0.127 57.86 / 50%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
+  <nav>
+    <div class="internal-links">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/blog">Posts</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+    </div>
+<!--<button id="light-dark-toggle"  aria-describedby="theme-description">
+    <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" ><mask id="sun-dot-mask-r2"><rect x="-10" y="-10" width="44" height="44" fill="#FFF"></rect><circle r="6" cx="12" cy="12" fill="#000"></circle></mask><mask id="moon-cutout-mask-r2"><rect x="0" y="0" width="24" height="24" fill="#FFF"></rect><circle cx="12" cy="4" r="8" fill="#000"></circle></mask><mask id="moon-crescent-mask-r2"><rect x="0" y="0" width="24" height="24" fill="#000"></rect><circle r="10.5" cx="12" cy="12" fill="#FFF"></circle></mask><g mask="url(#sun-dot-mask-r2)"><circle data-include-enter-animation="true" cx="22" cy="12" r="1.5" fill="currentColor" class="s5z4at1" style="transform-origin: center center; --enter-animation-delay: 480ms; "></circle><circle data-include-enter-animation="true" cx="19.0711" cy="19.0711" r="1.5" fill="currentColor" class="s5z4at1" style="transform-origin: center center; --enter-animation-delay: 400ms;"></circle><circle data-include-enter-animation="true" cx="12" cy="22" r="1.5" fill="currentColor" class="s5z4at1" style="transform-origin: center center; --enter-animation-delay: 320ms;"></circle><circle data-include-enter-animation="true" cx="4.9289" cy="19.0711" r="1.5" fill="currentColor" class="s5z4at1" style="transform-origin: center center; --enter-animation-delay: 240ms;"></circle><circle data-include-enter-animation="true" cx="2" cy="12" r="1.5" fill="currentColor" class="s5z4at1" style="transform-origin: center center; --enter-animation-delay: 200ms;"></circle><circle data-include-enter-animation="true" cx="4.9289" cy="4.9289" r="1.5" fill="currentColor" class="s5z4at1" style="transform-origin: center center; --enter-animation-delay: 280ms;"></circle><circle data-include-enter-animation="true" cx="12" cy="2" r="1.5" fill="currentColor" class="s5z4at1" style="transform-origin: center center; --enter-animation-delay: 360ms;"></circle><circle data-include-enter-animation="true" cx="19.0711" cy="4.9289" r="1.5" fill="currentColor" class="s5z4at1" style="transform-origin: center center; --enter-animation-delay: 440ms;"></circle></g><g mask="url(#moon-cutout-mask-r2)"><circle cx="12" cy="12" stroke="currentColor" fill="none" r="9.5"></circle></g><g mask="url(#moon-crescent-mask-r2)"><circle cx="12" cy="4" r="8" stroke="currentColor" fill="none"></circle></g></svg>
+  </button>
+ -->
+  <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+      <mask class="moon" id="moon-mask">
+        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+        <circle cx="24" cy="10" r="6" fill="black" />
+      </mask>
+      <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+      <g class="sun-beams" stroke="currentColor">
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+       </g>
+    </svg>
+  </button>
 
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	
+  </nav>
+</header>
+<style is:global>
+  header {
+    margin: 0;
+    padding: 0 1em;
+    background-color: oklch(78.06% 0.127 57.86 / 4.7%);
+    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+    border-bottom: 1px solid oklch(78.06% 0.127 57.86 / 50%);
+  }
+  h2 {
+    margin: 0;
+    font-size: 1em;
+  }
+
+  h2 a,
+  h2 a.active {
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav a {
+    padding: 1em 0.5em;
+    color: var(--text-accent-color);
+    border-bottom: 4px solid transparent;
+    text-decoration: none;
+  }
+  nav a.active {
+    text-decoration: none;
+    border-bottom-color: var(--accent);
+  }
+  /*#theme-description {
+    display:none;
+  }
+  #light-dark-toggle {
+    position: relative;
+    display: block;
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    border-radius: 1000px;
+    outline-offset: 0px;
+    outline-color: white;
+
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+
+  }
+  body[data-light="true"] {
+
+    svg {
+      transition-duration: 2s;
+      transition-property: transform;
+      transform: rotate(0deg);
+    }
+    #sun-dot-mask-r2 circle, #sun-dot-mask-r2 rect {
+      transition-duration: 1;
+      transition-property: transform;
+      transform: scale(1);
+    }
+    #moon-cutout-mask-r2 circle, #moon-cutout-mask-r2 rect {
+      transition-duration: 1;
+      transition-property: transform;
+      transform: scale(0);
+    }
+    #moon-crescent-mask-r2 circle,  #moon-crescent-mask-r2 rect {
+      transition-duration: 1;
+      transition-property: transform;
+      transform: scale(0);
+    }
+  }
+
+  body[data-light="false"] {
+    svg {
+      transition-duration: 2s;
+      transition-property: transform;
+      
+      transform: rotate(40deg);
+    }
+    #sun-dot-mask-r2 circle, #sun-dot-mask-r2 rect {
+      transition-duration: 1;
+      transition-property: transform;
+      transform: scale(0);
+    }
+    #moon-cutout-mask-r2 circle, #moon-cutout-mask-r2 rect {
+      transition-duration: 1;
+      transition-property: transform;
+      transform: scale(1);
+    }
+    #moon-crescent-mask-r2 circle,  #moon-crescent-mask-r2 rect {
+      transition-duration: 1;
+      transition-property: transform;
+      transform: scale(1);
+    }
+  }*/
+
+
 </style>
+
+<script>
+  const toggle = document.getElementById('light-dark-toggle'); 
+  const body = document.getElementsByTagName('body')[0];
+  toggle?.addEventListener('click', (e) => {
+    console.log('clicked on toggle', e);
+    const currentValue = body.getAttribute('data-light');
+    console.log('current value = ', currentValue);
+    body.setAttribute('data-light', currentValue == 'true' ? 'false' : 'true');
+  })
+</script>

@@ -13,37 +13,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
+   
     <style>
-      .main-container {
-        /* background: radial-gradient(ellipse at top,  oklch(78.06% 0.127 57.86), transparent),
-        radial-gradient(ellipse at bottom, oklch(78.06% 0.127 57.86 / 10.7%), transparent);
-*/
-        /* oklch(78.06% 0.127 57.86) */
-        /*background: radial-gradient(
-            ellipse at top,
-            oklch(78.06% 0.127 57.86 / 15.7%),
-            transparent
-          ),
-          radial-gradient(
-            ellipse at bottom,
-            oklch(78.06% 0.127 57.86 / 40%),
-            transparent
-          );*/
-        background-color: white;
-      }
-      main {
-        /*	width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;*/
-        /*background-color: oklch(78.06% 0.127 57.86 / 15.7%);*/
-
-        max-width: 800px;
-        margin: 0;
-        background-color: white;
-        background-color: rgba(255, 255, 255, 0.8);
-        margin-left: auto;
-        margin-right: auto;
-      }
       .hero-image {
         width: 100%;
       }
@@ -58,7 +29,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         max-width: calc(100% - 2em);
         margin: auto;
         padding: 1em;
-        color: rgb(var(--gray-dark));
+        color: rgb(var(--text-color));
       }
       .title {
         margin-bottom: 1em;
@@ -71,7 +42,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       }
       .date {
         margin-bottom: 0.5em;
-        color: rgb(var(--gray));
+        color: rgb(var(--text-accent-color));
       }
       .last-updated-on {
         font-style: italic;
@@ -80,30 +51,34 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   </head>
 
   <body>
-    <Header />
-    <div class="main-container">
-      <main>
-        <article>
-          <div class="prose">
-            <div class="title">
-              <h1>{title}</h1>
-              <div class="date">
-                <FormattedDate date={pubDate} />
-                {
-                  updatedDate && (
-                    <div class="last-updated-on">
-                      Last updated on <FormattedDate date={updatedDate} />
-                    </div>
-                  )
-                }
+    <div class="body-bg">
+      <div class="main-container">
+        <div class="main-border">
+          <main>
+            <Header />
+            <article>
+              <div class="prose">
+                <div class="title">
+                  <h1>{title}</h1>
+                  <div class="date">
+                    <FormattedDate date={pubDate} />
+                    {
+                      updatedDate && (
+                        <div class="last-updated-on">
+                          Last updated on <FormattedDate date={updatedDate} />
+                        </div>
+                      )
+                    }
+                  </div>
+                  <hr />
+                </div>
+                <slot />
               </div>
-              <hr />
-            </div>
-            <slot />
-          </div>
-        </article>
-      </main>
+            </article>
+            <Footer />
+          </main>
+        </div>
+      </div>
     </div>
-    <Footer />
   </body>
 </html>

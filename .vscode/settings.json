@@ -2,6 +2,12 @@
     "editor.formatOnSaveMode": "file",
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
+    "prettier.documentSelectors": ["**/*.astro"],
+    "[astro]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
     "editor.tabSize": 2,
     "[javascript]": {
       "editor.formatOnSave": true,
@@ -16,11 +22,6 @@
     "[html]": {
       "editor.formatOnSave": true,
       "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.tabSize": 2
-    },
-    "[astro]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "astro-build.astro-vscode",
       "editor.tabSize": 2
     },
     "[scss]": {

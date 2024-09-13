@@ -1,55 +1,46 @@
 ---
-import Layout from '../layouts/BaseLayout.astro';
+import Layout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout
-	title="About Me"
-	description="Harley Bussell About page"
-
->
-<style>
-img {
-  width:280px;
-  height:280px;
-  padding: 2px;
-  margin: 10px;
-  border-radius: 50%;
-  float: right;
-  shape-outside: circle(50%);
-  border: 4px solid white;
-}
-.intro {
-  padding-bottom: 20px;
-}
-p.bold {
-  font-size: 120%;
-}
+<Layout title="About Me" description="Harley Bussell About page">
+  <style>
+    img {
+      width: 280px;
+      height: 280px;
+      padding: 2px;
+      margin: 10px;
+      border-radius: 50%;
+      float: right;
+      shape-outside: circle(50%);
+      border: 4px solid white;
+    }
+    .intro {
+      padding-bottom: 20px;
+    }
+    p.bold {
+      font-size: 120%;
+    }
   </style>
 
-
   <p class="intro">
-    
-   
-    
-      <img src="/harley.webp" width="280" alt="Photo of Harley"/>
+    <img src="/harley.webp" width="280" alt="Photo of Harley" />
 
-
-     <p class="bold">Hello! I'm a software engineer who loves working with code and creating products that people want to use.</p>
-     
+    <p class="bold">
+      Hello! I'm a software engineer who loves working with code and creating
+      products that people want to use.
+    </p>
   </p>
 
-  
+  <p>
+    I've been building web experiences for the past 20 years, with a
+    professional background ranging from front-end and back-end development,
+    site reliability, developer platform tools and more. Working within the
+    Travel, News, Ecommerce and Energy sectors.
+  </p>
 
-	<p>
-    
-    I've been building web experiences for the past 20 years, with a professional background ranging from front-end and back-end development, site reliability, developer platform tools and more.
-    Working within the Travel, News, Ecommerce and Energy sectors.
-    
-	</p>
-  
-	<p>
-    Contact me on <a href="mailto:harley.r.bussell@gmail.com" target="_blank">harley.r.bussell@gmail.com</a> 
-	</p>
-
-  
+  <p>
+    Contact me on <a href="mailto:harley.r.bussell@gmail.com" target="_blank"
+      >harley.r.bussell@gmail.com</a
+    >
+  </p>
 </Layout>
