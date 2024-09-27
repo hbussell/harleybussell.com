@@ -30,7 +30,6 @@ const { title, description } = Astro.props;
         max-width: calc(100% - 2em);
         margin: auto;
         padding: 1em;
-        color: rgb(var(--text-color));
       }
       .title {
         margin-bottom: 1em;
@@ -43,7 +42,6 @@ const { title, description } = Astro.props;
       }
       .date {
         margin-bottom: 0.5em;
-        color: rgb(var(--text-accent-color));
       }
       .last-updated-on {
         font-style: italic;
@@ -51,18 +49,23 @@ const { title, description } = Astro.props;
     </style>
   </head>
 
-  <body data-light="true">
+  <body>
     <div class="body-bg">
       <div class="main-container">
         <div class="main-border">
+          <div class="main-bg">
+          <Header />
           <main>
-            <Header />
-            <article>
+          
+            <slot />
+
+            <!--<article>
               <div class="prose">
-                <slot />
+               
               </div>
-            </article>
+            </article> -->
           </main>
+        </div>
         </div>
       </div>
       <Footer />

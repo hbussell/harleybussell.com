@@ -1,0 +1,57 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+---
+<style>
+  ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+      }
+  .toc-title {
+    margin: 1rem 0px;
+    font-size: 90%;
+
+  }
+  .toc-heading {
+    padding: 6px 0px;
+  }
+  .toc-heading a {
+    font-size: 80%;
+    color: var(--color-text);
+  }
+  .toc .active a {
+    color: var(--color-lagoon-dark);
+  }
+  .toc li {
+    border-left: 3px solid oklch(78.06% 0.127 57.86 / 10%);
+    padding-left: 15px;
+    position: relative;
+    left: -20px;
+    width: calc(100% + 20px);
+  }
+  .toc li.active {
+    border-left: 3px solid oklch(78.06% 0.127 57.86);
+    background-color: oklch(78.06% 0.127 57.86 / 4.7%);
+  }
+  aside {
+    border-left: 1px solid oklch(78.06% 0.127 57.86 / 20%);
+  }
+</style>
+
+<div class="toc">
+  <h4 class="toc-title">TABLE OF CONTENTS</h4>
+  <ul class="text-card-foreground">
+    {headings.map((heading) => <li class="toc-heading">
+      <a href=`#${heading.slug}`>{heading.text}</a>
+    </li> )}
+  </ul>
+</div>
+
+
+

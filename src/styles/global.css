@@ -7,6 +7,7 @@
 :root {
   --accent: oklch(67.83% 0.156 35.18);
   --accent-dark: oklch(78.06% 0.127 57.86);
+  --accent-border: oklch(57.85% 0.0997 57.8 / 40%);
   --white: 227, 230, 232;
   --black: 15, 18, 25;
   --gray: 96, 115, 159;
@@ -16,7 +17,9 @@
   --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
     0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
   --text-color: rgb(var(--black));
-  --text-accent-color: rgba(var(--black), 33%);
+  --text-footer-color: oklch(18.38% 0.0168 57.86);
+  --link-color: var(--accent);
+  --text-accent-color: rgba(var(--black), 80%);
   --bg-color: rgb(var(--white));
 }
 @font-face {
@@ -58,6 +61,7 @@ body {
 }
 main {
   flex: 1;
+  padding: 1em;
 }
 h1,
 h2,
@@ -66,7 +70,7 @@ h4,
 h5,
 h6 {
   margin: 0 0 0.5rem 0;
-  color: rgb(var(--black));
+  color: rgb(var(--text-color));
   line-height: 1.2;
 }
 h1 {
@@ -89,7 +93,7 @@ b {
   font-weight: 700;
 }
 a {
-  color: var(--accent);
+  color: var(--link-color);
 }
 a:hover {
   color: var(--accent);
@@ -197,7 +201,7 @@ hr {
       oklch(78.06% 0.127 57.86 / 15.7%)
     );
 }
-main {
+.main-bg {
   margin: 0.25em;
   padding: 0.25em;
   background-color: var(--bg-color);
@@ -207,12 +211,12 @@ main {
 img.profile {
   width: 270px;
   height: 270px;
-  padding: 2px;
+  padding: 1px;
 
   border-radius: 50%;
   float: right;
   shape-outside: circle(50%);
-  border: 4px solid rgb(var(--gray-light));
+  border: 2px solid var(--accent-border);
 }
 
 html,
@@ -220,7 +224,7 @@ html[data-theme="light"] {
   color-scheme: light;
 
   --text-color: rgb(var(--black));
-  --bg-color: rgb(var(--white));
+  --bg-color: white;
 }
 
 /* Dark theme override */
@@ -228,10 +232,13 @@ html[data-theme="dark"] {
   color-scheme: dark;
 
   --text-color: rgb(var(--white));
-  --bg-color: rgb(var(--black));
+  --bg-color: oklch(18.54% 0.0076 35.18); /*rgb(var(--black));*/
   --text-accent-color: oklch(88.19% 0.156 35.18);
   --accent: oklch(79.11% 0.156 35.18);
   --accent-dark: oklch(88.19% 0.156 35.18);
+  --link-color: oklch(93.56% 0.156 35.18);
+  --gray-light: 229, 233, 240;
+  --text-footer-color: oklch(73.9% 0.0168 57.8);
 }
 
 [data-theme="light"] {
@@ -258,7 +265,9 @@ html[data-theme="dark"] {
   }
 }
 [data-theme="dark"] {
-  background-color: rgb(12, 15, 18);
+  /*background-color: rgb(12, 15, 18);*/
+
+  background-color: oklch(17% 0.0076 35.18);
 
   .main-border {
     margin: 0.25em;
@@ -269,14 +278,74 @@ html[data-theme="dark"] {
 
     background: radial-gradient(
         in oklch ellipse at top left,
-
-        rgb(72, 72, 72),
-        oklch(78.06% 0.127 57.86 / 15.7%)
+        oklch(51.34% 0.0127 57.86 / 15.7%),
+        transparent
       ),
       radial-gradient(
         in oklch ellipse at bottom right,
-        oklch(78.06% 0.127 57.86 / 40%),
-        oklch(78.06% 0.127 57.86 / 15.7%)
+        oklch(57.85% 0.0997 57.8 / 40%),
+        oklch(57.85% 0.0997 57.8/ 15.7%)
       );
+  }
+}
+
+.title {
+  color: rgb(var(--text-color));
+}
+.date {
+  color: rgb(var(--gray));
+}
+
+.side-col-wrapper {
+  display: grid;
+
+  grid-template-areas:
+    "title"
+    "side"
+    "content";
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+}
+
+.side-col-wrapper aside {
+  grid-area: side;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  margin-bottom: 1em 0px;
+}
+
+.side-col-wrapper .prose {
+  grid-area: content;
+}
+
+.side-col-wrapper aside {
+  height: 100vh;
+  min-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  padding-left: 1em;
+}
+
+.side-col-wrapper .title {
+  grid-area: title;
+}
+
+@media (min-width: 920px) {
+  .side-col-wrapper {
+    grid-template-areas:
+      "title side"
+      "content side";
+    grid-template-columns: 1fr 300px;
+  }
+  aside {
+    padding-left: 1em;
+    margin-left: 1em;
+    border-left: 1px solid oklch(78.06% 0.127 57.86 / 20%);
   }
 }
