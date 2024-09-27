@@ -7,11 +7,14 @@ import FormattedDate from "../components/FormattedDate.astro";
 import type { MarkdownHeading, MarkdownLayoutProps } from "astro";
 import Toc from "../components/Toc.astro";
 type BlogProps = CollectionEntry<"blog">["data"];
-type Props = BlogProps & { headings: MarkdownHeading[] };
-console.log("what is blog post props", Astro.props);
+type Props = {
+  post: BlogProps;
+  headings: MarkdownHeading[];
+};
 
-const { title, description, pubDate, updatedDate, heroImage, headings } =
-  Astro.props;
+const { title, description, pubDate, updatedDate, heroImage } =
+  Astro.props.post;
+const headings = Astro.props.headings;
 ---
 
 <html lang="en">
