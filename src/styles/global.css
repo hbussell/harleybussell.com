@@ -6,6 +6,7 @@
 
 :root {
   --accent: oklch(67.83% 0.156 35.18);
+  --secondary-accent: oklch(69.59% 0.0497 43.94);
   --accent-dark: oklch(78.06% 0.127 57.86);
   --accent-border: oklch(57.85% 0.0997 57.8 / 40%);
   --white: 227, 230, 232;
@@ -20,6 +21,7 @@
   --text-footer-color: oklch(18.38% 0.0168 57.86);
   --link-color: var(--accent);
   --text-accent-color: rgba(var(--black), 80%);
+
   --bg-color: rgb(var(--white));
 }
 @font-face {
@@ -232,13 +234,14 @@ html[data-theme="dark"] {
   color-scheme: dark;
 
   --text-color: rgb(var(--white));
-  --bg-color: oklch(18.54% 0.0076 35.18); /*rgb(var(--black));*/
+  --bg-color: oklch(18.54% 0.0076 35.18);
   --text-accent-color: oklch(88.19% 0.156 35.18);
   --accent: oklch(79.11% 0.156 35.18);
   --accent-dark: oklch(88.19% 0.156 35.18);
   --link-color: oklch(93.56% 0.156 35.18);
   --gray-light: 229, 233, 240;
-  --text-footer-color: oklch(73.9% 0.0168 57.8);
+  --secondary-accent: oklch(69.59% 0 43.94);
+  --text-footer-color: var(--accent-secondary);
 }
 
 [data-theme="light"] {
@@ -293,7 +296,7 @@ html[data-theme="dark"] {
   color: rgb(var(--text-color));
 }
 .date {
-  color: rgb(var(--gray));
+  color: var(--secondary-accent);
 }
 
 .side-col-wrapper {
