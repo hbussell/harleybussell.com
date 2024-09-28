@@ -1,12 +1,7 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import PostList from "../components/PostList.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Layout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
@@ -26,8 +21,7 @@ const posts = (await getCollection("blog")).sort(
 
     border-left: 1px solid oklch(78.06% 0.127 57.86 / 20%);
   }
-  .right-panel ul,
-  .posts ul {
+  .right-panel ul {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
@@ -37,24 +31,9 @@ const posts = (await getCollection("blog")).sort(
     gap: 8px;
     align-items: center;
   }
-  .posts h3 {
-    font-size: 120%;
-    margin-bottom: 1em;
-  }
-  .posts h4 {
-    font-size: 100%;
-  }
-
   ul li a {
     display: block;
     text-decoration: none;
-  }
-  .title {
-    margin: 0;
-    line-height: 1;
-  }
-  .date {
-    margin: 0;
   }
 
   ul {
@@ -65,12 +44,18 @@ const posts = (await getCollection("blog")).sort(
     text-align: left;
     margin-bottom: 1rem;
   }
+  h4 {
+    margin-bottom: 0.5em;
+  }
+  .bold {
+  }
 </style>
 <Layout title="Harley Bussell" description="Harley Bussell">
   <div class="home-wrapper">
     <div>
+      <h4>Hello!</h4>
       <p class="bold">
-        Hello! I'm a software engineer who loves working with code and creating
+        I'm a software engineer who loves working with code and creating
         products that people want to use.
       </p>
       <p>
